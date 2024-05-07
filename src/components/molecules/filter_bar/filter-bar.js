@@ -1,13 +1,21 @@
 import React from "react";
 import Label from '../../atoms/label/index';
+import './filter-bar.scss';
 
 const FilterBar = () => {
   return (
     <div>
       <Label value={'Filter'} />
-      <hr />
+      <hr className="border" />
       <div className="check-box">
-        
+        <div>
+          <span>Rating 4 ke atas</span>
+          <input type="checkbox" />
+        </div>
+        <div>
+          <span>Stock Tersedia</span>
+          <input type="checkbox" />
+        </div>
       </div>
     </div>
   );

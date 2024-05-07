@@ -7,9 +7,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   --primary: #3C3C3F;
+  --border: #D8D8D8;
+  --text-filter: #888888;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.border {
+  border: 1px solid var(--border);
 }
