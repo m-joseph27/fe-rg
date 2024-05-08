@@ -5,8 +5,10 @@ import './filter-bar.scss';
 const FilterBar = () => {
   return (
     <div className="filter-bar">
-      <Label value={'Filter'} />
-      <hr className="border" />
+      <div className="filter-label">
+        <Label value={'Filter'} />
+      </div>
+      <hr />
       <div className="check-box">
         <div className="box">
           <span>Rating 4 ke atas</span>
