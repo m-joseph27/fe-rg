@@ -13,8 +13,12 @@ body {
   --text-sort: #838383;
   --text-point: #74B71B;
   --text-review: #838EAB;
+  --text-sold: #E64580;
   --btn-primary: #016A4E;
   --btn-secondary: #73B81C;
+  --footer: #232323;
+  --disabled: #E1E8EE;
+  --preview: #649C1A;
 }
 
 code {

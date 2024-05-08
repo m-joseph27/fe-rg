@@ -4,6 +4,7 @@ import NavigationBar from './components/molecules/navbar/navbar';
 import FilterBar from './components/molecules/filter_bar/filter-bar';
 import SortBar from './components/molecules/sort_bar/sort_bar';
 import ListCard from './components/molecules/list-card/list-card';
+import Footer from './components/molecules/footer/footer';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <FilterBar />
       <SortBar />
       <ListCard />
+      <Footer />
     </div>
   );
 }
