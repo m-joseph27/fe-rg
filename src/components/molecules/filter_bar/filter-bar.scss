@@ -1,5 +1,9 @@
 .filter-bar {
   width: 250px;
+  .border {
+    margin-top: 32px;
+    margin-bottom: 20px;
+  }
   .check-box {
     border: 1px solid var(--border);
     border-radius: 3px;
@@ -13,6 +17,9 @@
     .box {
       display: flex;
       justify-content: space-between;
+      input {
+        cursor: pointer;
+      }
     }
   }
 }
