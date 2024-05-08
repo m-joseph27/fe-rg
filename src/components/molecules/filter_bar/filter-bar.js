@@ -1,5 +1,5 @@
 import React from "react";
-import Label from '../../atoms/label/index';
+import Label from '../../atoms/label/label';
 import './filter-bar.scss';
 
 const FilterBar = () => {

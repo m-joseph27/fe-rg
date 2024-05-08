@@ -8,7 +8,13 @@ body {
 
   --primary: #3C3C3F;
   --border: #D8D8D8;
+  --text-basic: #FFFFFF;
   --text-filter: #888888;
+  --text-sort: #838383;
+  --text-point: #74B71B;
+  --text-review: #838EAB;
+  --btn-primary: #016A4E;
+  --btn-secondary: #73B81C;
 }
 
 code {

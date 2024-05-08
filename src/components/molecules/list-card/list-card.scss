@@ -1,0 +1,67 @@
+.list-card {
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  width: 280px;
+  height: 420px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 25px;
+  position: relative;
+  .tag-image {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: -1px;
+    right: -12px;
+    padding-left: 12px;
+  }
+  .img-phone {
+    display: flex;
+    justify-content: center;
+    img {
+      object-fit: cover;
+      width: 250px !important;
+      height: 250px !important;
+    }
+  }
+  .phone-name {
+    line-height: 20px;
+  }
+  .phone-desc {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    .phone-point {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      .img-point {
+        width: 10px;
+        height: 10px;
+      }
+      .point {
+        color: var(--text-point);
+        font-size: 12px;
+      }
+    }
+    .phone-review {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      span {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: var(--text-review);
+      }
+    }
+  }
+  .btn-favorite {
+    padding-top: 5px;
+    button {
+      border: none;
+      background: none;
+    }
+  }
+}

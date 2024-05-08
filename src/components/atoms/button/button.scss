@@ -1,0 +1,33 @@
+.btn-fav {
+  border: none;
+  background: none;
+}
+
+.button {
+  display: inline-block;
+  button {
+    padding: 10px 50px;
+    border-radius: 20px;
+  }
+  .btn-primary {
+    border: none;
+    background: var(--btn-primary);
+    color: var(--text-basic);
+    transition: background-color 0.3s ease;
+    &:active {
+      background: var(--text-basic);
+      color: var(--btn-primary);
+      border: 1px solid var(--btn-primary);
+    }
+  }
+  .btn-secondary {
+    border: 1px solid var(--btn-secondary);
+    background: var(--text-basic);
+    color: var(--text-point);
+    transition: background-color 0.3s ease;
+    &:active {
+      background: var(--btn-secondary);
+      color: var(--text-basic);
+    }
+  }
+}

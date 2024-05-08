@@ -1,8 +1,6 @@
-import React from "react";
-import './index.scss';
+import './label.scss';
 
 const Label = (props) => {
-  console.log('props', props);
   return (
     <div>
       <p>{props.value}</p>
