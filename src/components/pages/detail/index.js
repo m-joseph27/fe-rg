@@ -42,7 +42,7 @@ const PageDetailList = () => {
 
   return (
     <>
-      <NavigationBar />
+      {/* <NavigationBar /> */}
       <div className="detail-page">
         <div className="product">
           <div className="tag-product">

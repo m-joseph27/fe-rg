@@ -10,8 +10,8 @@ import PageDetailList from './components/pages/detail';
 function App() {
   return (
     <div className="App">
+      <NavigationBar />
       <PageDetailList />
-      {/* <NavigationBar /> */}
       {/* <FilterBar /> */}
       {/* <SortBar /> */}
       {/* <ListCard /> */}
