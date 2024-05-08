@@ -6,15 +6,17 @@ import SortBar from './components/molecules/sort_bar/sort_bar';
 import ListCard from './components/molecules/list-card/list-card';
 import Footer from './components/molecules/footer/footer';
 import PageDetailList from './components/pages/detail';
+import PageList from './components/pages/list';
 
 function App() {
   return (
     <div className="App">
       <NavigationBar />
+      <PageList />
       {/* <PageDetailList /> */}
       {/* <FilterBar /> */}
       {/* <SortBar /> */}
-      <ListCard />
+      {/* <ListCard /> */}
       <Footer />
     </div>
   );
