@@ -3,6 +3,7 @@
 body {
   margin: 0;
   font-family: "Raleway", sans-serif;
+  color: var(--primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -26,6 +27,6 @@ code {
     monospace;
 }
 
-.border {
+/* .border {
   border: 1px solid var(--border);
-}
+} */

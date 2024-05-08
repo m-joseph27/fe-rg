@@ -3,7 +3,7 @@ import './list-card.scss';
 import Phone from '../../../assets/phone.png';
 import Tag from '../../../assets/new-tag.svg';
 import Point from '../../../assets/point.svg';
-import { Rating } from 'react-simple-star-rating'
+import { Rating } from 'react-simple-star-rating';
 import FavButton from "../../atoms/button/fav-button";
 import UnFavButton from "../../atoms/button/unfav-button";
 import Button from "../../atoms/button/button";
