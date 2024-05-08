@@ -4,7 +4,7 @@ import Loved from '../../../assets/loved.svg';
 const FavButton = () => {
   return (
     <>
-      <img src={Loved} alt="loved" />
+      <img className="to-favorite" src={Loved} alt="loved" />
     </>
   );
 }

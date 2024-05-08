@@ -14,7 +14,7 @@ function App() {
       <PageDetailList />
       {/* <FilterBar /> */}
       {/* <SortBar /> */}
-      {/* <ListCard /> */}
+      <ListCard />
       <Footer />
     </div>
   );

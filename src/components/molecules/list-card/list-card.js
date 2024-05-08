@@ -58,7 +58,6 @@ const ListCard = () => {
           </div>
         </div>
       </div>
-      <Button text={'Add to cart'} type={'primary'} />
     </>
   );
 }

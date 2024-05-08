@@ -4,7 +4,7 @@ import UnLoved from '../../../assets/unloved.svg';
 const UnFavButton = () => {
   return (
     <>
-      <img src={UnLoved} alt="unloved" />
+      <img className="to-favorite" src={UnLoved} alt="unloved" />
     </>
   );
 }
