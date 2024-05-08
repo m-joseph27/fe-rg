@@ -26,7 +26,6 @@ const PageDetailList = () => {
     setCount(
       count + 1
     );
-    console.log('count', count);
     if (count === 1) {
       setDisabled(false);
     }
