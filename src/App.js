@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <NavigationBar />
-      <PageDetailList />
+      {/* <PageDetailList /> */}
       {/* <FilterBar /> */}
       {/* <SortBar /> */}
       <ListCard />

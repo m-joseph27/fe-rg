@@ -10,6 +10,8 @@ import Button from "../../atoms/button/button";
 
 const ListCard = () => {
   const [ altImage, setAltImage ] = useState('unloved');
+  const [ stock, setStock ] = useState(6);
+
   const onClickBtnFav = () => {
     setAltImage('unloved')
   }
@@ -24,8 +26,10 @@ const ListCard = () => {
         <div className="tag-image">
           <img src={Tag} alt="item-tag" />
         </div>
-        <div>
-          <p>In Stock</p>
+        <div className="stock">
+          {
+            stock > 5 ? <span className="in-stock">In Stock</span> : <span className="under-stock">{`Stock < 5`}</span>
+          }
         </div>
         <div className="img-phone">
           <img src={Phone} alt="phone" />
