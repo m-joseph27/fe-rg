@@ -1,10 +1,18 @@
-.check-box {
-  border: 1px solid var(--border);
-  padding: 10px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  color: var(--text-filter);
-  font-size: 12px;
-  margin-top: 15px;
+.filter-bar {
+  width: 250px;
+  .check-box {
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--text-filter);
+    font-size: 12px;
+    margin-top: 15px;
+    .box {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }

@@ -4,15 +4,15 @@ import './filter-bar.scss';
 
 const FilterBar = () => {
   return (
-    <div>
+    <div className="filter-bar">
       <Label value={'Filter'} />
       <hr className="border" />
       <div className="check-box">
-        <div>
+        <div className="box">
           <span>Rating 4 ke atas</span>
           <input type="checkbox" />
         </div>
-        <div>
+        <div className="box">
           <span>Stock Tersedia</span>
           <input type="checkbox" />
         </div>
