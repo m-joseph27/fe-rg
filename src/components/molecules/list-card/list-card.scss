@@ -78,7 +78,7 @@
 .list-card {
   border: 1px solid var(--border);
   width: 280px;
-  height: 480px;
+  height: 450px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -125,10 +125,12 @@
     display: flex;
     justify-content: center;
     margin-bottom: 15px;
+    margin-top: 25px;
     img {
       object-fit: contain;
       width: 100%!important;
       min-height: 260px !important;
+      max-height: 261px !important;
     }
   }
   .phone-name {

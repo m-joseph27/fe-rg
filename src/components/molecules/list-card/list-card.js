@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './list-card.scss';
-import Phone from '../../../assets/phone-removebg.png';
 import Tag from '../../../assets/new-tag.svg';
 import Point from '../../../assets/point.svg';
 import { Rating } from 'react-simple-star-rating';
@@ -12,9 +11,8 @@ import { useNavigate } from "react-router-dom";
 const ListCard = (props) => {
   const navigate = useNavigate();
   const [ altImage, setAltImage ] = useState('unloved');
-  const [ stock, setStock ] = useState(5);
   const [ soldOut, setSoldOut ] = useState(false);
-  const [ isHovered, setIsHovered ] = useState(false);
+  const [ hoveredItem, setHoveredItem ] = useState(null);
   const data = props.data;
 
   const onClickBtnFav = () => {
@@ -23,18 +21,6 @@ const ListCard = (props) => {
 
   const onClickBtnUnFav = () => {
     setAltImage('loved');
-  }
-  
-  const onMouseEnter = () => {
-    if (!soldOut) {
-      setIsHovered(true);
-    }
-  }
-
-  const onMouseLeave = () => {
-    if (!soldOut) {
-      setIsHovered(false);
-    }
   }
 
   const onDetailButtonClicked = (id) => {
@@ -45,9 +31,14 @@ const ListCard = (props) => {
     <>
       {
         data.map(item => (
-          <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={isHovered ? "hovered-list-card" : "list-card"}>
+          <div
+            key={item.id}
+            onMouseEnter={() => setHoveredItem(item.id)}
+            onMouseLeave={() => setHoveredItem(null)}
+            className={hoveredItem === item.id ? "hovered-list-card" : "list-card"}
+          >
             {
-              isHovered &&
+              hoveredItem === item.id &&
               <div>
                 <div className='hovered-item-ready'>
                   <div className="hovered-stock">
@@ -98,7 +89,7 @@ const ListCard = (props) => {
               </div>
             }
             {
-              !isHovered &&
+              hoveredItem !== item.id &&
               <div className={soldOut ? 'sold-out' : 'item-ready' }>
                 <div className="tag-image">
                   {
