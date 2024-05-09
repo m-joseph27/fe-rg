@@ -99,4 +99,30 @@
       }
     }
   }
+  .label-info {
+    background: url('../../../assets/batik-background.svg');
+    padding-top: 20px;
+    padding-left: 60px;
+    margin-bottom: 100px;
+    span {
+      font-size: 16px;
+      color: var(--btn-secondary);
+    }
+    .specification {
+      .label-detail {
+        color: var(--btn-primary);
+        font-size: 20px;
+      }
+    }
+    .spec-detail {
+      margin-top: 35px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      span {
+        color: var(--primary);
+        font-size: 14px;
+      }
+    }
+  }
 }

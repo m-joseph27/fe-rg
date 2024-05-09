@@ -106,6 +106,17 @@ const PageDetailList = () => {
             </div>
           </div>
         </div>
+        <div className="label-info">
+          <span>Info Produk</span>
+          <hr />
+          <div className="specification">
+            <span className="label-detail">Rincian</span>
+            <div className="spec-detail">
+              <span>Ukuran layar: 6.2 inci, Dual Edge Super AMOLED 2960 x 1440 (Quad HD+) 529 ppi, 18.5:9</span>
+              <span>Memori: RAM 6 GB (LPDDR4), ROM 64 GB, MicroSD up to 400GB</span>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
