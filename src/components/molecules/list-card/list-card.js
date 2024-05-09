@@ -16,7 +16,6 @@ const ListCard = (props) => {
   const [ soldOut, setSoldOut ] = useState(false);
   const [ isHovered, setIsHovered ] = useState(false);
   const data = props.data;
-  console.log('data', data);
 
   const onClickBtnFav = () => {
     setAltImage('unloved')
