@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import './list-card.scss';
-import Phone from '../../../assets/phone.png';
+import Phone from '../../../assets/phone-removebg.png';
 import Tag from '../../../assets/new-tag.svg';
 import Point from '../../../assets/point.svg';
 import { Rating } from 'react-simple-star-rating';
 import FavButton from "../../atoms/button/fav-button";
 import UnFavButton from "../../atoms/button/unfav-button";
-import Button from "../../atoms/button/button";
 
 const ListCard = () => {
   const [ altImage, setAltImage ] = useState('unloved');
   const [ stock, setStock ] = useState(6);
+  const [ soldOut, setSoldOut ] = useState(false);
 
   const onClickBtnFav = () => {
     setAltImage('unloved')
@@ -23,42 +23,61 @@ const ListCard = () => {
   return (
     <>
       <div className="list-card">
-        <div className="tag-image">
-          <img src={Tag} alt="item-tag" />
-        </div>
-        <div className="stock">
-          {
-            stock > 5 ? <span className="in-stock">In Stock</span> : <span className="under-stock">{`Stock < 5`}</span>
-          }
-        </div>
-        <div className="img-phone">
-          <img src={Phone} alt="phone" />
-        </div>
-        <div className="phone-name">
-          <span>Samsung Galaxy S9 -Midnight Black 4/64 GB</span>
-        </div>
-        <div className="phone-desc">
-          <div>
-            <div className="phone-point">
-              <img className="img-point" src={Point} />
-              <span className="point">2000 Poins</span>
-            </div>
-            <div className="phone-review">
-              <Rating size={15} readonly className="star" />
-              <span>160 reviews</span>
-            </div>
-          </div>
-          <div className="btn-favorite">
+        <div className={soldOut ? 'sold-out' : 'item-ready' }>
+          <div className="tag-image">
             {
+              soldOut ?
+              <></>
+              :
+              <img src={Tag} alt="item-tag" />
+            }
+          </div>
+          <div className="stock">
+            {
+              soldOut ?
+              <span className="item-sold-out">Sold Out</span>
+              :
+              <>
+                {
+                  stock > 5 ? <span className="in-stock">In Stock</span> : <span className="under-stock">{`Stock < 5`}</span>
+                }
+              </>
+            }
+          </div>
+          <div className="img-phone">
+            {
+              soldOut ?
+              <img className={soldOut ? 'img-sold' : ''} src={Phone} alt="phone" />
+              :
+              <img src={Phone} alt="phone" />
+            }
+          </div>
+          <div className="phone-name">
+            <span>Samsung Galaxy S9 -Midnight Black 4/64 GB</span>
+          </div>
+          <div className="phone-desc">
+            <div>
+              <div className="phone-point">
+                <img className="img-point" src={Point} />
+                <span className="point">2000 Poins</span>
+              </div>
+              <div className="phone-review">
+                <Rating size={15} readonly className="star" />
+                <span>160 reviews</span>
+              </div>
+            </div>
+            <div className="btn-favorite">
+              {
                 altImage === 'loved' ?
-                <button onClick={onClickBtnFav}>
+                <button disabled={soldOut} onClick={onClickBtnFav}>
                   <FavButton />
                 </button>
                 :
-                <button onClick={onClickBtnUnFav}>
+                <button disabled={soldOut} onClick={onClickBtnUnFav}>
                   <UnFavButton />
                 </button>
               }
+            </div>
           </div>
         </div>
       </div>
