@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './index.scss';
 import NavigationBar from '../../molecules/navbar/navbar';
-import Phone from '../../../assets/phone.png';
+import Phone from '../../../assets/phone-removebg.png';
 import Tag from '../../../assets/hot-item-tag.svg';
 import Point from '../../../assets/point.svg';
 import FavButton from "../../atoms/button/fav-button";
