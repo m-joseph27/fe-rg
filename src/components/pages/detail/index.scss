@@ -44,13 +44,14 @@
         .phone-review {
           display: flex;
           align-items: center;
-          gap: 5px;
+          gap: 10px;
           margin-top: 5px;
           span {
             display: flex;
             align-items: center;
             font-size: 12px;
             color: var(--text-review);
+            margin-top: 5px;
           }
         }
         .point {

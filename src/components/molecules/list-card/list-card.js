@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import './list-card.scss';
 import Tag from '../../../assets/new-tag.svg';
 import Point from '../../../assets/point.svg';
-import { Rating } from 'react-simple-star-rating';
+import StarRatings from "react-star-ratings";
 import FavButton from "../../atoms/button/fav-button";
 import UnFavButton from "../../atoms/button/unfav-button";
 import Button from "../../atoms/button/button";
@@ -13,6 +13,8 @@ const ListCard = (props) => {
   const [ altImage, setAltImage ] = useState('unloved');
   const [ soldOut, setSoldOut ] = useState(false);
   const [ hoveredItem, setHoveredItem ] = useState(null);
+  const [ rating, setRating ] = useState(0);
+
   const data = props.data;
 
   const onClickBtnFav = () => {
@@ -25,6 +27,12 @@ const ListCard = (props) => {
 
   const onDetailButtonClicked = (id) => {
     navigate(`/detail/${id}`);
+  }
+
+  const roundedStar = (rating) => {
+    const roundedRating = Math.round(rating * 2) / 2;
+
+    return roundedRating;
   }
 
   return (
@@ -131,10 +139,17 @@ const ListCard = (props) => {
                   <div>
                     <div className="phone-point">
                       <img className="img-point" src={Point} />
-                      <span className="point">{ item.attributes.points }</span>
+                      <span className="point">{ item.attributes.points + ' poins'}</span>
                     </div>
                     <div className="phone-review">
-                      <Rating size={15} readonly className="star" />
+                      <StarRatings
+                        rating={roundedStar(item.attributes.rating)}
+                        numberOfStars={5}
+                        starRatedColor="gold"
+                        starDimension="14px"
+                        starSpacing="1px"
+                        halfStarEnabled={true}
+                      />
                       <span>{ item.attributes.numOfReviews + ' reviews'}</span>
                     </div>
                   </div>

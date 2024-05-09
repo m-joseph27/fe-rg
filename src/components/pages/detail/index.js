@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './index.scss';
-import Phone from '../../../assets/phone-removebg.png';
 import Tag from '../../../assets/hot-item-tag.svg';
 import Point from '../../../assets/point.svg';
 import FavButton from "../../atoms/button/fav-button";
 import UnFavButton from "../../atoms/button/unfav-button";
-import { Rating } from 'react-simple-star-rating';
 import Button from '../../atoms/button/button';
 import { useNavigate, useParams } from 'react-router-dom';
 import GetDetailItem from '../../../services/items';
+import StarRatings from "react-star-ratings";
 
 const PageDetailList = () => {
   const navigate = useNavigate();
@@ -20,6 +19,7 @@ const PageDetailList = () => {
   const [ altImage, setAltImage ] = useState('unloved');
   const [ data, setData ] = useState([]);
   const [ loading, setLoading ] = useState(false);
+  const [ rating, setRating ] = useState(0);
 
   useEffect(() => {
     setLoading(true);
@@ -28,9 +28,9 @@ const PageDetailList = () => {
         const result = await GetDetailItem(`/gifts/${id}`);
         setLoading(false);
         setData(result.data.data);
-
         result.data.data.attributes.stock === 0 ? setCount(0) : setCount(1);
         result.data.data.attributes.stock === 0 ? setIncrementDisabled(true) : setIncrementDisabled(false);
+        roundedStar(result.data.data.attributes.rating);
       } catch (error) {
         setLoading(false);
         console.log(error)
@@ -70,6 +70,12 @@ const PageDetailList = () => {
     navigate('/')
   }
 
+  const roundedStar = (rating) => {
+    const roundedRating = Math.round(rating * 2) / 2;
+
+    setRating(roundedRating);
+  }
+
   return (
     <div className="detail-item-page">
     {
@@ -97,7 +103,14 @@ const PageDetailList = () => {
             <div className="desc-product">
               <div className="phone-name"><span>{ data.attributes?.name }</span></div>
               <div className="phone-review">
-                <Rating size={18} readonly className="star" />
+                <StarRatings
+                  rating={rating}
+                  numberOfStars={5}
+                  starRatedColor="gold"
+                  starDimension="18px"
+                  starSpacing="2px"
+                  halfStarEnabled={true}
+                />
                 <span>{ data.attributes?.numOfReviews + ' reviews' }</span>
               </div>
               <div className="point">
