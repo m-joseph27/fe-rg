@@ -8,7 +8,6 @@ const SortBar = () => {
   const [buttonLabel, setButtonLabel] = useState('Terbaru');
 
   useEffect(() => {
-    // Set label default saat komponen dimuat
     setButtonLabel('Terbaru');
   }, []);
 

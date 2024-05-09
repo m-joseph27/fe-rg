@@ -90,13 +90,16 @@ const ListCard = (props) => {
             }
             {
               hoveredItem !== item.id &&
-              <div className={soldOut ? 'sold-out' : 'item-ready' }>
+              <div className={item.attributes?.stock === 0 ? 'sold-out' : 'item-ready' }>
                 <div className="tag-image">
                   {
                     item.attributes.stock > 5 ?
                     <></>
                     :
+                    item.attributes.stock !== 0 ?
                     <img src={Tag} alt="item-tag" />
+                    :
+                    <></>
                   }
                 </div>
                 <div className="stock">

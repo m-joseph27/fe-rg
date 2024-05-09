@@ -14,18 +14,25 @@ const PageDetailList = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  let [ count, setCount ] = useState(1);
+  let [ count, setCount ] = useState();
   const [ disabled, setDisabled ] = useState(true);
+  const [ incrementDisabled, setIncrementDisabled ] = useState();
   const [ altImage, setAltImage ] = useState('unloved');
   const [ data, setData ] = useState([]);
+  const [ loading, setLoading ] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     const fetchDataFromServer = async () => {
       try {
         const result = await GetDetailItem(`/gifts/${id}`);
-        console.log('data', result.data.data);
+        setLoading(false);
         setData(result.data.data);
+
+        result.data.data.attributes.stock === 0 ? setCount(0) : setCount(1);
+        result.data.data.attributes.stock === 0 ? setIncrementDisabled(true) : setIncrementDisabled(false);
       } catch (error) {
+        setLoading(false);
         console.log(error)
       }
     };
@@ -64,8 +71,13 @@ const PageDetailList = () => {
   }
 
   return (
-    <>
-      <div className="detail-page">
+    <div className="detail-item-page">
+    {
+      loading ? (
+        <h2 className="loading">Loading...</h2>
+      ) :
+      (
+        <div className="detail-page">
         <div className="product">
           <div className="tag-product">
             <button onClick={onBackButtonClicked}>
@@ -99,9 +111,9 @@ const PageDetailList = () => {
               <div className="count-section">
                 <span className="count">Jumlah</span>
                 <div class="counter">
-                  <button disabled={disabled} onClick={decrement} className="calculation">-</button>
+                  <button disabled={disabled} onClick={decrement} className={disabled ? "disabled-calculation" : "calculation"}>-</button>
                   <button class="number">{count}</button>
-                  <button onClick={increment} className="calculation">+</button>
+                  <button disabled={incrementDisabled} onClick={increment} className={incrementDisabled ? "disabled-inc-calculation" : "calculation"}>+</button>
                 </div>
               </div>
               <div className="btn-product">
@@ -117,8 +129,8 @@ const PageDetailList = () => {
                     </button>
                   }
                 </div>
-                <Button type={'primary'} text={'Redeem'} />
-                <Button type={'secondary'} text={'Add to cart'} />
+                <Button disabled={incrementDisabled} type={'primary'} text={'Redeem'} />
+                <Button disabled={incrementDisabled} type={'secondary'} text={'Add to cart'} />
               </div>
             </div>
           </div>
@@ -134,7 +146,9 @@ const PageDetailList = () => {
           </div>
         </div>
       </div>
-    </>
+      )
+    }
+    </div>
   );
 }
 

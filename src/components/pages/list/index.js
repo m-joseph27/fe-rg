@@ -17,10 +17,7 @@ const PageList = () => {
       try {
         const result = await GetItems(`/gifts?page[number]=${1}&page[size]=${6}`);
         setData(result.data);
-
-        console.log('res', result.data);
       } catch (error) {
-
         console.log(error)
       }
     };

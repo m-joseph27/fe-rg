@@ -2,8 +2,8 @@ import './button.scss';
 
 const Button = (props) => {
   return (
-    <div className="button">
-      <button className={`btn-${props.type}`}>
+    <div className={props.disabled ? "btn-disabled" : "button"}>
+      <button disabled={props.disabled} className={`btn-${props.type}`}>
         {props.icon &&
           <i class="fa-regular fa-eye"></i>
         }

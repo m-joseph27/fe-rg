@@ -7,6 +7,47 @@
   height: 40px;
 }
 
+.btn-disabled {
+  cursor: not-allowed;
+  button {
+    padding: 10px 50px;
+    border-radius: 20px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    i {
+      font-size: 12px;
+    }
+  }
+  .btn-primary {
+    border: none;
+    background: var(--btn-primary);
+    color: var(--text-basic);
+    transition: background-color 0.3s ease;
+    &:active {
+      background: var(--text-basic);
+      color: var(--btn-primary);
+      border: 1px solid var(--btn-primary);
+    }
+  }
+  .btn-secondary {
+    border: 1px solid var(--btn-secondary);
+    background: var(--text-basic);
+    color: var(--text-point);
+    transition: background-color 0.3s ease;
+    &:active {
+      background: var(--btn-secondary);
+      color: var(--text-basic);
+    }
+  }
+  .btn-detail {
+    border: 1px solid var(--border);
+    background: none;
+    color: var(--text-basic);
+    transition: background-color 0.3s ease;
+  }
+}
+
 .button {
   display: inline-block;
   button {
