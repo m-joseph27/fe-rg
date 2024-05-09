@@ -68,7 +68,7 @@ const ListCard = () => {
                 <span>Samsung Galaxy S9 -Midnight Black 4/64 GB</span>
               </div>
               <div className="btn-detail">
-                <Button type={'secondary'} text={'View detail'} />
+                <Button type={'detail'} text={'View detail'} />
               </div>
               <div className="btn-favorite">
                 {

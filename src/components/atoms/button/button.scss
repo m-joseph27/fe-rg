@@ -34,4 +34,10 @@
       color: var(--text-basic);
     }
   }
+  .btn-detail {
+    border: 1px solid var(--border);
+    background: none;
+    color: var(--text-basic);
+    transition: background-color 0.3s ease;
+  }
 }
