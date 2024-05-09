@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import NavigationBar from './components/molecules/navbar/navbar';
-import FilterBar from './components/molecules/filter_bar/filter-bar';
-import SortBar from './components/molecules/sort_bar/sort_bar';
-import ListCard from './components/molecules/list-card/list-card';
 import Footer from './components/molecules/footer/footer';
 import PageDetailList from './components/pages/detail';
 import PageList from './components/pages/list';
 
 function App() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <div className="App">
       <NavigationBar />
-      <PageList />
-      <PageDetailList />
-      {/* <FilterBar /> */}
-      {/* <SortBar /> */}
-      {/* <ListCard /> */}
+      <Routes>
+        <Route path="/" element={<PageList />} />
+        <Route path="/detail" element={<PageDetailList />} />
+      </Routes>
       <Footer />
     </div>
   );

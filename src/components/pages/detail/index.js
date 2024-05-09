@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './index.scss';
-import NavigationBar from '../../molecules/navbar/navbar';
 import Phone from '../../../assets/phone-removebg.png';
 import Tag from '../../../assets/hot-item-tag.svg';
 import Point from '../../../assets/point.svg';
@@ -8,8 +7,11 @@ import FavButton from "../../atoms/button/fav-button";
 import UnFavButton from "../../atoms/button/unfav-button";
 import { Rating } from 'react-simple-star-rating';
 import Button from '../../atoms/button/button';
+import { useNavigate } from 'react-router-dom';
 
 const PageDetailList = () => {
+  const navigate = useNavigate();
+
   let [ count, setCount ] = useState(1);
   const [ disabled, setDisabled ] = useState(true);
   const [ altImage, setAltImage ] = useState('unloved');
@@ -40,11 +42,18 @@ const PageDetailList = () => {
     }
   }
 
+  const onBackButtonClicked = () => {
+    navigate('/')
+  }
+
   return (
     <>
       <div className="detail-page">
         <div className="product">
           <div className="tag-product">
+            <button onClick={onBackButtonClicked}>
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
             <span>{`List Product > `}<span>{`Samsung Galaxy s9`}</span> </span>
           </div>
           <div className="content">

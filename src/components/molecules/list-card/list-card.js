@@ -7,8 +7,10 @@ import { Rating } from 'react-simple-star-rating';
 import FavButton from "../../atoms/button/fav-button";
 import UnFavButton from "../../atoms/button/unfav-button";
 import Button from "../../atoms/button/button";
+import { useNavigate } from "react-router-dom";
 
 const ListCard = () => {
+  const navigate = useNavigate();
   const [ altImage, setAltImage ] = useState('unloved');
   const [ stock, setStock ] = useState(5);
   const [ soldOut, setSoldOut ] = useState(false);
@@ -34,6 +36,10 @@ const ListCard = () => {
       console.log('leave');
       setIsHovered(false);
     }
+  }
+
+  const onDetailButtonClicked = () => {
+    navigate('/detail');
   }
 
   return (
@@ -68,7 +74,9 @@ const ListCard = () => {
                 <span>Samsung Galaxy S9 -Midnight Black 4/64 GB</span>
               </div>
               <div className="btn-detail">
-                <Button type={'detail'} text={'View detail'} icon={true} />
+                <button onClick={onDetailButtonClicked} className="linked-button">
+                  <Button type={'detail'} text={'View detail'} icon={true} />
+                </button>
               </div>
               <div className="btn-favorite">
                 {
