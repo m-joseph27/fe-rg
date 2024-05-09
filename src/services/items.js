@@ -7,7 +7,7 @@ const api = axios.create({
 });
 
 const apiClient = axios.create({
-  baseURL: 'https://recruitment.dev.rollingglory.com/api/v2/gifts',
+  baseURL: 'https://recruitment.dev.rollingglory.com/api/v2',
   headers: {
     'Content-Type': 'application/json',
   }
