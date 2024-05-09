@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './index.scss';
-import Tag from '../../../assets/hot-item-tag.svg';
+import HotItem from '../../../assets/hot-item-tag.svg';
+import BestSeller from '../../../assets/best-seller-tag.svg';
+import NewItem from '../../../assets/new-tag.svg';
 import Point from '../../../assets/point.svg';
 import FavButton from "../../atoms/button/fav-button";
 import UnFavButton from "../../atoms/button/unfav-button";
@@ -13,7 +15,7 @@ const PageDetailList = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  let [ count, setCount ] = useState();
+  const [ count, setCount ] = useState();
   const [ disabled, setDisabled ] = useState(true);
   const [ incrementDisabled, setIncrementDisabled ] = useState();
   const [ altImage, setAltImage ] = useState('unloved');
@@ -94,7 +96,18 @@ const PageDetailList = () => {
           <div className="content">
             <div className="phone-image">
               <div className="tag-image">
-                <img src={Tag} alt="item-tag" />
+                {
+                  data.attributes?.isNew === 1 && rating >= 4 && data.attributes?.numOfReviews > 25 ? (
+                    <img src={HotItem} alt="item-tag" />
+                  ) :
+                  rating >= 4 && data.attributes?.numOfReviews > 25 ? (
+                    <img src={BestSeller} alt="item-tag" />
+                  ) :
+                  data.attributes?.isNew === 1 ? (
+                    <img src={NewItem} alt="item-tag" />
+                  ) :
+                  (<div></div>)
+                }
               </div>
               <div className="product-image">
                 <img src={ data.attributes?.images[0] } alt="phone" />
@@ -116,7 +129,20 @@ const PageDetailList = () => {
               <div className="point">
                 <img className="img-point" src={Point} alt="point" />
                 <span>{ data.attributes?.points + ' Poins' }</span>
-                <span className="stock">In Stock</span>
+                <div className="stock">
+                  {
+                    data.attributes?.stock === 0 ?
+                    <span className="item-sold-out">Sold Out</span>
+                    :
+                    data.attributes?.stock <= 5 ?
+                    <span className="under-stock">{`Stock < 5`}</span>
+                    :
+                    data.attributes?.stock >= 6 ?
+                    <span className="in-stock">In Stock</span>
+                    :
+                    <></>
+                  }
+                </div>
               </div>
               <div className="description">
                 <div className="text" dangerouslySetInnerHTML={{ __html: data.attributes?.info }} />
