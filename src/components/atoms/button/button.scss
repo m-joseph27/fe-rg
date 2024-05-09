@@ -15,6 +15,9 @@
     display: flex;
     gap: 5px;
     align-items: center;
+    i {
+      font-size: 12px;
+    }
   }
   .btn-primary {
     border: none;
