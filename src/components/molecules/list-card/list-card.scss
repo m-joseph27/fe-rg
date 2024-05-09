@@ -1,7 +1,7 @@
 .hovered-list-card {
   border: 1px solid var(--border);
   width: 280px;
-  height: 420px;
+  height: 450px;
   border-radius: 5px;
   display: flex;
   flex-direction: row;
@@ -25,10 +25,11 @@
       justify-content: center;
       opacity: 0.2;
       height: 90% !important;
+      margin-bottom: 15px;
       img {
-        object-fit: cover;
-        width: 250px !important;
-        height: 250px !important;
+        object-fit: contain;
+        width: 100%!important;
+        min-height: 300px !important;
       }
     }
     .hovered-phone-desc {
@@ -46,6 +47,7 @@
       font-size: 16px;
       .phone-name {
         width: 250px;
+        margin-top: 20px;
       }
       .btn-detail {
         font-size: 14px;
@@ -76,7 +78,7 @@
 .list-card {
   border: 1px solid var(--border);
   width: 280px;
-  height: 420px;
+  height: 480px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -122,10 +124,11 @@
   .img-phone {
     display: flex;
     justify-content: center;
+    margin-bottom: 15px;
     img {
-      object-fit: cover;
-      width: 250px !important;
-      height: 250px !important;
+      object-fit: contain;
+      width: 100%!important;
+      min-height: 260px !important;
     }
   }
   .phone-name {
