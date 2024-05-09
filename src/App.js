@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <NavigationBar />
       <PageList />
-      {/* <PageDetailList /> */}
+      <PageDetailList />
       {/* <FilterBar /> */}
       {/* <SortBar /> */}
       {/* <ListCard /> */}
