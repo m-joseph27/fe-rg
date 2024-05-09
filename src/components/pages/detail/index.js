@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.scss';
 import Phone from '../../../assets/phone-removebg.png';
 import Tag from '../../../assets/hot-item-tag.svg';
@@ -7,14 +7,31 @@ import FavButton from "../../atoms/button/fav-button";
 import UnFavButton from "../../atoms/button/unfav-button";
 import { Rating } from 'react-simple-star-rating';
 import Button from '../../atoms/button/button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import GetDetailItem from '../../../services/items';
 
 const PageDetailList = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
 
   let [ count, setCount ] = useState(1);
   const [ disabled, setDisabled ] = useState(true);
   const [ altImage, setAltImage ] = useState('unloved');
+  const [ data, setData ] = useState([]);
+
+  useEffect(() => {
+    const fetchDataFromServer = async () => {
+      try {
+        const result = await GetDetailItem(`/${id}`);
+        console.log('data', result.data.data);
+        setData(result.data.data);
+      } catch (error) {
+        console.log(error)
+      }
+    };
+
+    fetchDataFromServer();
+  }, []);
 
   const onClickBtnFav = () => {
     setAltImage('unloved')
@@ -62,22 +79,22 @@ const PageDetailList = () => {
                 <img src={Tag} alt="item-tag" />
               </div>
               <div className="product-image">
-                <img src={Phone} alt="phone" />
+                <img src={ data.attributes?.images[0] } alt="phone" />
               </div>
             </div>
             <div className="desc-product">
-              <div className="phone-name"><span>Samsung Galaxy S9 - Midnight Black 4/64 GB</span></div>
+              <div className="phone-name"><span>{ data.attributes?.name }</span></div>
               <div className="phone-review">
                 <Rating size={18} readonly className="star" />
-                <span>160 reviews</span>
+                <span>{ data.attributes?.numOfReviews + ' reviews' }</span>
               </div>
               <div className="point">
                 <img className="img-point" src={Point} alt="point" />
-                <span>2000.000 Poins</span>
+                <span>{ data.attributes?.points + ' Poins' }</span>
                 <span className="stock">In Stock</span>
               </div>
               <div className="description">
-                <span>Ukuran layar: 6.2 inci, Dual Edge Super AMOLED 2960 x 1440 (Quad HD+) 529 ppi, 18.5:9 Memori: RAM 6 GB (LPDDR4), ROM 64 GB, MicroSD up to 400GB Sistem operasi: Android 8.0 (Oreo)</span>
+                <div className="text" dangerouslySetInnerHTML={{ __html: data.attributes?.info }} />
               </div>
               <div className="count-section">
                 <span className="count">Jumlah</span>
@@ -112,8 +129,7 @@ const PageDetailList = () => {
           <div className="specification">
             <span className="label-detail">Rincian</span>
             <div className="spec-detail">
-              <span>Ukuran layar: 6.2 inci, Dual Edge Super AMOLED 2960 x 1440 (Quad HD+) 529 ppi, 18.5:9</span>
-              <span>Memori: RAM 6 GB (LPDDR4), ROM 64 GB, MicroSD up to 400GB</span>
+              <span dangerouslySetInnerHTML={{ __html: data.attributes?.description }} />
             </div>
           </div>
         </div>

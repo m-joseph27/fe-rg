@@ -18,7 +18,7 @@ function App() {
       <NavigationBar />
       <Routes>
         <Route path="/" element={<PageList />} />
-        <Route path="/detail" element={<PageDetailList />} />
+        <Route path="/detail/:id" element={<PageDetailList />} />
       </Routes>
       <Footer />
     </div>

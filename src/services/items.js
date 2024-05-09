@@ -7,7 +7,7 @@ const api = axios.create({
 });
 
 const apiClient = axios.create({
-  baseURL: 'https://recruitment.dev.rollingglory.com/api/v2/gifts?page[number]=1&page[size]=6',
+  baseURL: 'https://recruitment.dev.rollingglory.com/api/v2/gifts',
   headers: {
     'Content-Type': 'application/json',
   }
@@ -23,9 +23,9 @@ export const GetItems = async (endpoint) => {
   }
 };
 
-const GetDetailItem = async (endpoint) => {
+export const GetDetailItem = async (endpoint) => {
   try {
-    const response = await api.get(endpoint);
+    const response = await apiClient.get(endpoint);
     return response.data;
   } catch (error) {
     console.error('Error fetching data:', error);

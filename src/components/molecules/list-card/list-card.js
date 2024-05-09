@@ -37,8 +37,8 @@ const ListCard = (props) => {
     }
   }
 
-  const onDetailButtonClicked = () => {
-    navigate('/detail');
+  const onDetailButtonClicked = (id) => {
+    navigate(`/detail/${id}`);
   }
 
   return (
@@ -77,7 +77,7 @@ const ListCard = (props) => {
                       <span>{ item.attributes.name }</span>
                     </div>
                     <div className="btn-detail">
-                      <button onClick={onDetailButtonClicked} className="linked-button">
+                      <button onClick={() => onDetailButtonClicked(item.id)} className="linked-button">
                         <Button type={'detail'} text={'View detail'} icon={true} />
                       </button>
                     </div>
