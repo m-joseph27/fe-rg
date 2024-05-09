@@ -22,7 +22,7 @@ const PageDetailList = () => {
   useEffect(() => {
     const fetchDataFromServer = async () => {
       try {
-        const result = await GetDetailItem(`/${id}`);
+        const result = await GetDetailItem(`/gifts/${id}`);
         console.log('data', result.data.data);
         setData(result.data.data);
       } catch (error) {
