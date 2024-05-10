@@ -10,44 +10,58 @@ import Button from '../../atoms/button/button';
 import { useNavigate, useParams } from 'react-router-dom';
 import GetDetailItem from '../../../services/items';
 import StarRatings from "react-star-ratings";
+import { addToLocalStorage, removeFromLocalStorageById, getFromLocalStorage } from "../../../services/local-storage";
 
 const PageDetailList = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const localStorageItem = "phone"
 
   const [ count, setCount ] = useState(0);
   const [ disabled, setDisabled ] = useState(true);
   const [ incrementDisabled, setIncrementDisabled ] = useState();
-  const [ altImage, setAltImage ] = useState('unloved');
-  const [ data, setData ] = useState([]);
+  const [ data, setData ] = useState({});
   const [ loading, setLoading ] = useState(false);
   const [ rating, setRating ] = useState();
+  const [ isFavorite, setIsFavorite ] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     const fetchDataFromServer = async () => {
       try {
         const result = await GetDetailItem(`/gifts/${id}`);
-        setLoading(false);
         setData(result.data.data);
         result.data.data.attributes.stock === 0 ? setCount(0) : setCount(1);
         result.data.data.attributes.stock === 0 ? setIncrementDisabled(true) : setIncrementDisabled(false);
         roundedStar(result.data.data.attributes.rating);
+        setLoading(false);
       } catch (error) {
         setLoading(false);
         console.log(error)
       }
     };
-
+    
     fetchDataFromServer();
-  }, [id]);
+  }, [id, localStorageItem]);
+
+  useEffect(() => {
+    if (data.id) {
+      const favorites = getFromLocalStorage(localStorageItem) || [];
+      const isFav = favorites.some(item => {
+        return item.id.toString() === data.id.toString();
+      });
+      setIsFavorite(isFav);
+    }
+  }, [data, localStorageItem]);
 
   const onClickBtnFav = () => {
-    setAltImage('unloved')
+    removeFromLocalStorageById(localStorageItem, data.attributes.id);
+    setIsFavorite(false);
   }
 
   const onClickBtnUnFav = () => {
-    setAltImage('loved');
+    addToLocalStorage(localStorageItem, data.attributes);
+    setIsFavorite(true);
   }
 
   const increment = () => {
@@ -161,7 +175,7 @@ const PageDetailList = () => {
               <div className="btn-product">
                 <div className="btn-favorite">
                   {
-                    altImage === 'loved' ?
+                    isFavorite ?
                     <button onClick={onClickBtnFav}>
                       <FavButton />
                     </button>
