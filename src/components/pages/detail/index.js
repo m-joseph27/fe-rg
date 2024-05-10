@@ -15,13 +15,13 @@ const PageDetailList = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [ count, setCount ] = useState();
+  const [ count, setCount ] = useState(0);
   const [ disabled, setDisabled ] = useState(true);
   const [ incrementDisabled, setIncrementDisabled ] = useState();
   const [ altImage, setAltImage ] = useState('unloved');
   const [ data, setData ] = useState([]);
   const [ loading, setLoading ] = useState(false);
-  const [ rating, setRating ] = useState(0);
+  const [ rating, setRating ] = useState();
 
   useEffect(() => {
     setLoading(true);
@@ -40,7 +40,7 @@ const PageDetailList = () => {
     };
 
     fetchDataFromServer();
-  }, []);
+  }, [id]);
 
   const onClickBtnFav = () => {
     setAltImage('unloved')
@@ -51,21 +51,18 @@ const PageDetailList = () => {
   }
 
   const increment = () => {
-    setCount(
-      count + 1
-    );
+    setCount(prevCount => prevCount + 1);
     if (count === 1) {
       setDisabled(false);
     }
   }
 
   const decrement = () => {
-    setCount(
-      count - 1,
-    );
+    setCount(prevCount => prevCount - 1);
     if (count === 2) {
-      setDisabled(true)
+      setDisabled(true);
     }
+    setIncrementDisabled(false);
   }
 
   const onBackButtonClicked = () => {
@@ -77,6 +74,12 @@ const PageDetailList = () => {
 
     setRating(roundedRating);
   }
+
+  useEffect(() => {
+    if (data.attributes?.stock === count) {
+      setIncrementDisabled(true);
+    }
+  }, [count, data.attributes?.stock]);
 
   return (
     <div className="detail-item-page">
