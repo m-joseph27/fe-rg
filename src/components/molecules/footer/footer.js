@@ -7,13 +7,13 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="social-media">
-        <a href="https://instagram.com/" target="_blank">
+        <a href="https://instagram.com/" target="_blank" rel="noreferrer">
           <img src={Ig} alt="ig" />
         </a>
-        <a href="https://id-id.facebook.com/" target="_blank">
+        <a href="https://id-id.facebook.com/" target="_blank" rel="noreferrer">
           <img src={Fb} alt="fb" />
         </a>
-        <a href="https://twitter.com/" target="_blank">
+        <a href="https://twitter.com/" target="_blank" rel="noreferrer">
           <img src={Tw} alt="tw" />
         </a>
       </div>
