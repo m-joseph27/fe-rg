@@ -1,11 +1,5 @@
 import axios from "axios";
 
-const API_BASE_URL = `https://recruitment.dev.rollingglory.com/api/v2/gifts?page[number]=1&page[size]=6`;
-
-const api = axios.create({
-  baseURL: API_BASE_URL,
-});
-
 const apiClient = axios.create({
   baseURL: 'https://recruitment.dev.rollingglory.com/api/v2',
   headers: {

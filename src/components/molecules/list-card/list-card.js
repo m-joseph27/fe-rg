@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import './list-card.scss';
 import Tag from '../../../assets/new-tag.svg';
 import Point from '../../../assets/point.svg';
@@ -13,7 +13,6 @@ const ListCard = (props) => {
   const [ altImage, setAltImage ] = useState('unloved');
   const [ soldOut, setSoldOut ] = useState(false);
   const [ hoveredItem, setHoveredItem ] = useState(null);
-  const [ rating, setRating ] = useState(0);
 
   const data = props.data;
 
@@ -138,7 +137,7 @@ const ListCard = (props) => {
                 <div className="phone-desc">
                   <div>
                     <div className="phone-point">
-                      <img className="img-point" src={Point} />
+                      <img className="img-point" src={Point} alt="point" />
                       <span className="point">{ item.attributes.points + ' poins'}</span>
                     </div>
                     <div className="phone-review">
